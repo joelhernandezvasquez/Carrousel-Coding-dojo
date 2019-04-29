@@ -1,0 +1,36 @@
+
+.carrousel
+{
+ width:100%;
+ height:700px;
+ border:1px solid red;
+}
+
+.track-container
+{
+    width:100%;
+    height:100%;
+    background:silver;
+    display:grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 600px 100px;
+    grid-template-areas:
+    "left-arrow slides-container right-arrow"
+    ". dots-container . ";
+}
+
+.left-arrow
+{
+    grid-area:left-arrow;
+    background:green;
+}
+
+.slides-container
+{
+  grid-area:slides-container;
+  background:black;
+}
+.right-arrow
+{
+    
+}
