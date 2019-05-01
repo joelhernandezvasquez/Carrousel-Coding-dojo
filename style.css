@@ -40,6 +40,7 @@ span
 .adjust-icon
 {
   width:80px;
+ 
   /* background:#52515c;
   opacity: 0.7; */
 }
@@ -52,6 +53,10 @@ span
   color:white;
   background:#32aae1;
   font-weight: bold;
+}
+.button:hover
+{
+ cursor: pointer;
 }
 
 
@@ -74,6 +79,8 @@ span
     grid-template-areas:
     "left-arrow slides-container right-arrow"
     ". dots-container . ";
+    
+    
 }
 
 .left-arrow
@@ -86,7 +93,12 @@ span
 .slides-container
 {
   grid-area:slides-container;
-  /* border:1px solid black; */
+   border:1px solid red;
+   position:relative;
+ 
+  
+   
+  
 }
 .right-arrow
 {
@@ -131,6 +143,9 @@ span
   grid-gap:20px;
   grid-template-areas: 
   "text-caption-container image-container";
+  border:1px solid green;
+  position:absolute;
+ 
   
 }
 
@@ -153,3 +168,13 @@ span
  
   
 }
+
+/* JAVASCRIPT ANIMATION */
+
+.is-selected
+{
+ background:#32aae1;
+}
+
+.slide-selected
+{}

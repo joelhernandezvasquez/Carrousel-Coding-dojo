@@ -14,12 +14,12 @@
     
      <div class="left-arrow">
      
-        <input type="image" src="left.svg" class="adjust-icon">
+        <input type="image" src="left.svg" class="adjust-icon ">
      </div>
 
      <div class="slides-container">
 
-        <!-- <div class="slide">
+        <div class="slide slide-selected">
               <div class="text-caption-container">
               
                 <h1>IT'S ALL ABOUT YOUR ATTITUDE</h1>
@@ -33,9 +33,9 @@
                <img src="Ted_New.jpg">
              </div>
              
-         </div>  -->
+         </div>  
 
-           <!-- <div class="slide">
+          <div class="slide">
             <div class="text-caption-container">
                <h1>MY FIRST TIME CODING</h1>
                <span>TAMARA SOLORZANO | FORMER MARKETER</span>
@@ -49,9 +49,9 @@
               <img src="tamarha_1398490442_35.jpg">
             </div>
             
-        </div>  -->
+        </div>  
 
-        <div class="slide">
+         <div class="slide">
             <div class="text-caption-container">
                   <h1>HIGHLY RELEVANT CURRICULUM</h1>
                   <span>NATHAN WHITE | SOFTWARE ENGINEER</span>
@@ -65,17 +65,17 @@
             <img src="39890803845_d8c3189508_b.jpg">
             </div>
             
-        </div>   
+        </div>    
      </div>
 
      <div class="right-arrow">
-        <input type="image" src="right.svg" class="adjust-icon">
+        <input type="image" src="right.svg" class="adjust-icon" id="next-slide">
 
      </div>
 
      <div class="dots-container">
     
-        <button class="carrousel-rectangle"> </button>
+        <button class="carrousel-rectangle is-selected"> </button>
         <button class="carrousel-rectangle"> </button>
         <button class="carrousel-rectangle"> </button>
 
@@ -84,6 +84,35 @@
     </div>
 
  </div>
+
+ <script>
+  
+  const track= document.querySelector(".slides-container");
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const slideWidth = slides[0].getBoundingClientRect().width;
+ 
+   slides.forEach((slide,index) =>
+   {
+    slide.style.left = slideWidth * index + "px";
+   }
+   );
+
+   const nextSlideButton = document.querySelector("#next-slide");
+
+   nextSlideButton.addEventListener("click",e=>
+   {
+      const currentSlide = document.querySelector(".slide-selected");
+      const nextSlide = currentSlide.nextElementSibling;
+      const amountToMove = nextSlide.style.left;
+      
+
+
+      track.style.left =  '-' + amountToMove;
+      currentSlide.classList.remove("slide-selected");
+      nextSlide.classList.add("slide-selected");
+   })
+    
+</script>
 
 </body>
 
