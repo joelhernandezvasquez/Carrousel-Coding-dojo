@@ -3,6 +3,14 @@
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
 
+<script>
+ function hidePreviousButton()
+ {
+    const previousButton = document.querySelector("#previous-slide");
+    previousButton.style.display = "none";
+ }
+</script>
+
 </head>
 
 
@@ -14,7 +22,7 @@
     
      <div class="left-arrow">
      
-        <input type="image" src="left.svg" class="adjust-icon ">
+        <input type="image" src="left.svg" class="adjust-icon " id="previous-slide">
      </div>
 
      <div class="slides-container">
@@ -86,14 +94,16 @@
  </div>
 
  <script>
+
+    window.addEventListener("load",hidePreviousButton);
   
-  const track= document.querySelector(".slides-container");
-  const slides = Array.from(document.querySelectorAll(".slide"));
-  const slideWidth = slides[0].getBoundingClientRect().width;
- 
-   slides.forEach((slide,index) =>
+   const track = document.querySelector(".slides-container");
+   const slides = Array.from(document.querySelectorAll(".slide"));
+   const slidewidth = slides[0].getBoundingClientRect().width + 100;
+
+   slides.forEach((slide,index)=>
    {
-    slide.style.left = slideWidth * index + "px";
+      slide.style.left = slidewidth * index + "px";
    }
    );
 
@@ -101,17 +111,68 @@
 
    nextSlideButton.addEventListener("click",e=>
    {
-      const currentSlide = document.querySelector(".slide-selected");
-      const nextSlide = currentSlide.nextElementSibling;
-      const amountToMove = nextSlide.style.left;
+     const currentSlide = document.querySelector(".slide-selected");
+     const nextSlide = currentSlide.nextElementSibling;
+     const amountToMove = nextSlide.style.left;
+
+     
+     track.style.transform = 'translateX(-' + amountToMove + ')'
+     currentSlide.classList.remove("slide-selected");
+     nextSlide.classList.add("slide-selected");
+
+     // updating the dots
+
+      const currentDot = document.querySelector(".is-selected");
+      const nextDot = currentDot.nextElementSibling;
+
+      currentDot.classList.remove("is-selected");
+      nextDot.classList.add("is-selected");
+
+      const finalSlide = !nextSlide.nextElementSibling;
+
+      if(finalSlide)
+      {
+         nextSlideButton.style.display = "none";
+      }
       
+      previousSlideButton.style.display = "block";
 
+   });
 
-      track.style.left =  '-' + amountToMove;
-      currentSlide.classList.remove("slide-selected");
-      nextSlide.classList.add("slide-selected");
-   })
+   const previousSlideButton = document.querySelector("#previous-slide");
+
+   previousSlideButton.addEventListener("click",e=>
+   {
+     const currentSlide= document.querySelector(".slide-selected");
+     const previousSlide = currentSlide.previousElementSibling;
+     const amountToMove = previousSlide.style.left;
+
     
+     track.style.transform = 'translateX(-' + amountToMove + ')'
+
+     currentSlide.classList.remove("slide-selected");
+     previousSlide.classList.add("slide-selected");
+
+     // updating the dots
+
+     const currentDot = document.querySelector(".is-selected");
+      const nextDot = currentDot.previousElementSibling;
+
+      currentDot.classList.remove("is-selected");
+      nextDot.classList.add("is-selected");
+
+      const finalSlide = !previousSlide.previousElementSibling;
+      
+      if(finalSlide)
+      {
+         previousSlideButton.style.display = "none";
+      }
+
+      nextSlideButton.style.display = "block";
+
+   })
+
+  
 </script>
 
 </body>

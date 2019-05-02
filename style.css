@@ -79,7 +79,7 @@ span
     grid-template-areas:
     "left-arrow slides-container right-arrow"
     ". dots-container . ";
-    
+    overflow: hidden;
     
 }
 
@@ -93,12 +93,10 @@ span
 .slides-container
 {
   grid-area:slides-container;
-   border:1px solid red;
    position:relative;
- 
-  
+   transform: translateX(0);
+   transition: transform 0.5s ease-out;
    
-  
 }
 .right-arrow
 {
@@ -143,8 +141,9 @@ span
   grid-gap:20px;
   grid-template-areas: 
   "text-caption-container image-container";
-  border:1px solid green;
+
   position:absolute;
+  width:100%;
  
   
 }
