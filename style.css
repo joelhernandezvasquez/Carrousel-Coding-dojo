@@ -5,6 +5,8 @@
   --primary-background-color:#272732;
 }
 
+/* MAIN SELECTOR SECTION  */
+
 img
 {
   max-width: 100%;
@@ -36,13 +38,14 @@ span
   text-align: center;
 }
 
+/* ENDS MAIN SELECTOR SECTION  */
 
+
+
+/* COMMON CLASSES */
 .adjust-icon
 {
   width:80px;
- 
-  /* background:#52515c;
-  opacity: 0.7; */
 }
 
 .button
@@ -59,12 +62,15 @@ span
  cursor: pointer;
 }
 
+/* COMMON CLASSES */
+
+
+/* MAIN FEATURES LAYOUT */
 
 .carrousel
 {
  width:100%;
  height:700px;
- /* border:1px solid red; */
  background:var(--primary-background-color);
 }
 
@@ -72,36 +78,31 @@ span
 {
     width:100%;
     height:100%;
-    /* background:silver; */
     display:grid;
     grid-template-columns: 0.2fr 5fr 0.2fr;
     grid-template-rows: 600px 100px;
     grid-template-areas:
     "left-arrow slides-container right-arrow"
     ". dots-container . ";
-    overflow: hidden;
-    
+    overflow: hidden;   
 }
 
 .left-arrow
 {
-    grid-area:left-arrow;
-    /* border:1px solid green; */
-    
+ grid-area:left-arrow; 
 }
 
 .slides-container
 {
   grid-area:slides-container;
-   position:relative;
-   transform: translateX(0);
-   transition: transform 0.5s ease-out;
+  position:relative;
+  transform: translateX(0);
+  transition: transform 0.5s ease-out;
    
 }
 .right-arrow
 {
-    grid-area:right-arrow;
-    /* border:1px solid green; */
+  grid-area:right-arrow;  
 }
 
 .left-arrow ,.right-arrow
@@ -115,12 +116,10 @@ span
 .dots-container
 {
   grid-area:dots-container;
-  /* border:1px solid blue; */
   display: flex;
   justify-content: center;
   align-items: center;
   
-
 }
 .carrousel-rectangle
 {
@@ -129,8 +128,6 @@ span
   margin:5px;
   background:var(--primary-color);
   border:0px;
-  
-
 }
 
 .slide
@@ -141,17 +138,13 @@ span
   grid-gap:20px;
   grid-template-areas: 
   "text-caption-container image-container";
-
-  position:absolute;
+   position:absolute;
   width:100%;
- 
-  
 }
 
 .text-caption-container
 {
   grid-area:text-caption-container;
-  /* border:1px solid red; */
   background:var(--primary-background-color);
   display: flex;
   flex-direction: column;
@@ -163,10 +156,10 @@ span
 {
   grid-area:image-container;
   margin-top:20px;
-  /* background:blue; */
- 
-  
 }
+
+/* ENDS MAIN FEATURES LAYOUT */
+
 
 /* JAVASCRIPT ANIMATION */
 
