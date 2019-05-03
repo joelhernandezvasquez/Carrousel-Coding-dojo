@@ -27,7 +27,7 @@
 
      <div class="slides-container">
 
-        <div class="slide slide-selected">
+        <div class="slide slide-selected" id="first-slide">
               <div class="text-caption-container">
               
                 <h1>IT'S ALL ABOUT YOUR ATTITUDE</h1>
@@ -43,7 +43,7 @@
              
          </div>  
 
-          <div class="slide">
+          <div class="slide" id="second-slide">
             <div class="text-caption-container">
                <h1>MY FIRST TIME CODING</h1>
                <span>TAMARA SOLORZANO | FORMER MARKETER</span>
@@ -59,7 +59,7 @@
             
         </div>  
 
-         <div class="slide">
+         <div class="slide" id="third-slide">
             <div class="text-caption-container">
                   <h1>HIGHLY RELEVANT CURRICULUM</h1>
                   <span>NATHAN WHITE | SOFTWARE ENGINEER</span>
@@ -83,9 +83,9 @@
 
      <div class="dots-container">
     
-        <button class="carrousel-rectangle is-selected"> </button>
-        <button class="carrousel-rectangle"> </button>
-        <button class="carrousel-rectangle"> </button>
+        <button class="carrousel-rectangle is-selected" data-dot="first-dot"> </button>
+        <button class="carrousel-rectangle" data-dot="second-dot"> </button>
+        <button class="carrousel-rectangle" data-dot="third-dot"> </button>
 
      </div>
 
@@ -99,11 +99,12 @@
   
    const track = document.querySelector(".slides-container");
    const slides = Array.from(document.querySelectorAll(".slide"));
-   const slidewidth = slides[0].getBoundingClientRect().width + 100;
+   const slidewidth = slides[0].getBoundingClientRect().width + 110;
 
    slides.forEach((slide,index)=>
    {
       slide.style.left = slidewidth * index + "px";
+      
    }
    );
 
@@ -170,7 +171,92 @@
 
       nextSlideButton.style.display = "block";
 
-   })
+   });
+
+   const dotsButton = document.querySelector(".dots-container");
+   
+   dotsButton.addEventListener("click",e=>
+   {
+      const currentSlide = document.querySelector(".slide-selected");
+     
+      if(e.target.dataset.dot==="first-dot")
+      {
+        const nextSlide = document.querySelector("#first-slide");
+        const amountToMove = nextSlide.style.left;
+        track.style.transform = 'translateX(-' + amountToMove + ')';
+
+        currentSlide.classList.remove("slide-selected");
+        nextSlide.classList.add("slide-selected");
+
+        // updating the dots
+
+         const currentDot = document.querySelector(".is-selected");
+         currentDot.classList.remove("is-selected");
+         e.target.classList.add("is-selected");
+    
+         // updating the arrows
+          
+          const leftArrow = document.querySelector("#previous-slide");
+         const rightArrow = document.querySelector("#next-slide");
+
+          leftArrow.style.display = "none";
+          rightArrow.style.display = "block";
+
+
+         return;
+      }
+
+      if(e.target.dataset.dot==="second-dot")
+      {
+         const nextSlide = document.querySelector("#second-slide");
+        const amountToMove = nextSlide.style.left;
+        track.style.transform = 'translateX(-' + amountToMove + ')';
+
+        currentSlide.classList.remove("slide-selected");
+        nextSlide.classList.add("slide-selected");
+
+        // updating the dots
+
+         const currentDot = document.querySelector(".is-selected");
+         currentDot.classList.remove("is-selected");
+         e.target.classList.add("is-selected");
+
+         const leftArrow = document.querySelector("#previous-slide");
+         const rightArrow = document.querySelector("#next-slide");
+
+          leftArrow.style.display = "block";
+          rightArrow.style.display = "block";
+         return;
+      }
+
+      if(e.target.dataset.dot==="third-dot")
+      {
+         const nextSlide = document.querySelector("#third-slide");
+        const amountToMove = nextSlide.style.left;
+        track.style.transform = 'translateX(-' + amountToMove + ')';
+
+        currentSlide.classList.remove("slide-selected");
+        nextSlide.classList.add("slide-selected");
+
+        // updating the dots
+
+         const currentDot = document.querySelector(".is-selected");
+         currentDot.classList.remove("is-selected");
+         e.target.classList.add("is-selected");
+     
+         const leftArrow = document.querySelector("#previous-slide");
+         const rightArrow = document.querySelector("#next-slide");
+
+          leftArrow.style.display = "block";
+          rightArrow.style.display = "none";
+
+         return;
+      }
+
+      
+
+   }
+   );
 
   
 </script>
